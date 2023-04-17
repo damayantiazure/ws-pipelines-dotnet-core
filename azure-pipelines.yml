@@ -54,6 +54,6 @@ stages:
        inputs:
          azureSubscription: 'MasterConnection'
          appType: 'webApp'
-         appName: 'demotoday-webapp'
+         appName: 'inhollandwebappdemo'
          package: '$(System.ArtifactsDirectory)/drop/*.zip'
          deploymentMethod: 'auto'
