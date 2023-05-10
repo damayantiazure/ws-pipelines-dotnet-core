@@ -7,13 +7,9 @@ trigger:
 - master
 
 jobs:
-- job: string
-  timeoutInMinutes: number
-  cancelTimeoutInMinutes: number
-  strategy:
-    maxParallel: number
-    matrix: { string: { string: string } }
-
+- job: Monitoring
+  timeoutInMinutes: 2
+  cancelTimeoutInMinutes: 2
   pool: server # note: the value 'server' is a reserved keyword which indicates this is an agentless job
 
   steps:
