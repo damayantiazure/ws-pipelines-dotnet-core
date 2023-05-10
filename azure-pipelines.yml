@@ -6,27 +6,34 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+- job: string
+  timeoutInMinutes: number
+  cancelTimeoutInMinutes: number
+  strategy:
+    maxParallel: number
+    matrix: { string: { string: string } }
 
-steps:
-- task: AzureMonitor@1
-  inputs:
-    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
-    ResourceGroupName: 'Rabobank-smoketesting-rg'
-    filterType: 'alertrule'
-- task: AzureMonitor@1
-  inputs:
-    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
-    ResourceGroupName: 'Rabobank-smoketesting-rg'
-    filterType: 'alertrule'
-    alertRule: 'metricAlerts/Rabobank-SQLDB-Alert'
-   
-- task: AzureMonitor@1
-  inputs:
-    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
-    ResourceGroupName: 'Rabobank-smoketesting-rg'
-    filterType: 'alertrule'
-    alertRule: 'metricAlerts/RabobankADFAlerts'    
+  pool: server # note: the value 'server' is a reserved keyword which indicates this is an agentless job
+
+  steps:
+  - task: AzureMonitor@1
+    inputs:
+      connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+      ResourceGroupName: 'Rabobank-smoketesting-rg'
+      filterType: 'alertrule'
+  - task: AzureMonitor@1
+    inputs:
+      connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+      ResourceGroupName: 'Rabobank-smoketesting-rg'
+      filterType: 'alertrule'
+      alertRule: 'metricAlerts/Rabobank-SQLDB-Alert'
+    
+  - task: AzureMonitor@1
+    inputs:
+      connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+      ResourceGroupName: 'Rabobank-smoketesting-rg'
+      filterType: 'alertrule'
+      alertRule: 'metricAlerts/RabobankADFAlerts'    
 
 
