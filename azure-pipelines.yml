@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureMonitor@1
+  inputs:
+    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+    ResourceGroupName: 'Rabobank-smoketesting-rg'
+    filterType: 'alertrule'
+- task: AzureMonitor@1
+  inputs:
+    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+    ResourceGroupName: 'Rabobank-smoketesting-rg'
+    filterType: 'alertrule'
+    alertRule: 'metricAlerts/Rabobank-SQLDB-Alert'
+   
+- task: AzureMonitor@1
+  inputs:
+    connectedServiceNameARM: 'ME-MngEnv877982-dbhuyan-1(989f76fd-5edb-4aa1-b014-f989e1918adc)'
+    ResourceGroupName: 'Rabobank-smoketesting-rg'
+    filterType: 'alertrule'
+    alertRule: 'metricAlerts/RabobankADFAlerts'    
+
+
