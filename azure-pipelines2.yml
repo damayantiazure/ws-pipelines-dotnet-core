@@ -9,8 +9,8 @@ stages:
 - stage: Build
   jobs:
   - job: Build
-    pool:
-      vmImage: ubuntu-latest
+    pool: default
+      
     steps:
     - script: dotnet restore
     - task: DotNetCoreCLI@2
