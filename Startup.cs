@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+//Microsoft.Extensions.Hosting; Change 1
+//Microsoft.Extensions.Hosting; Change 2
+
 namespace pipelines_dotnet_core
 {
     public class Startup
