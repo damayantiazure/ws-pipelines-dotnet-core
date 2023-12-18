@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 
 //Microsoft.Extensions.Hosting; Change 1
 //Microsoft.Extensions.Hosting; Change 2
+//Microsoft.Extensions.Hosting; Change 3
 
 namespace pipelines_dotnet_core
 {
